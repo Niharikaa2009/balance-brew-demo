@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Balance Brew Café & Coworks – Balewadi, Pune</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf7f2;--warm:#f0e9dc;--brown:#3b2a1a;--mid:#7a5c3e;
+  --accent:#c07d3b;--light:#e8d9c4;--green:#2e4a38;--gl:#d4e6d9;
+  --red:#c0392b;
+}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--brown);overflow-x:hidden}
+a{text-decoration:none}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:var(--cream);border-bottom:1px solid var(--light);position:sticky;top:0;z-index:100}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--brown)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--mid);letter-spacing:0.3px}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:9px 20px;border-radius:6px;font-size:13px;font-weight:500}
+
+/* HERO */
+.hero{background:#1e1008;padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,#4a2a0e44,transparent 70%)}
+.hi{position:relative;z-index:1}
+.htag{display:inline-block;border:1px solid #c07d3b66;color:#d4a06a;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:1.2rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,5rem);font-weight:600;color:#faf7f2;line-height:1.05;margin-bottom:.5rem}
+.hero h1 em{font-style:italic;color:#d4a06a}
+.hdesc{font-size:14px;color:#b8a08a;margin-bottom:2rem;font-weight:300;letter-spacing:.3px;line-height:1.7}
+.hstats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.stat .n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#d4a06a;display:block}
+.stat .l{font-size:11px;color:#7a6050;letter-spacing:1px;text-transform:uppercase}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.bf{background:var(--accent);color:#fff;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:500;display:inline-block}
+.bo{border:1px solid #c07d3b88;color:#d4a06a;padding:13px 28px;border-radius:8px;font-size:14px;display:inline-block}
+
+/* INFO */
+.ibar{display:flex;justify-content:center;background:var(--green);flex-wrap:wrap}
+.ii{display:flex;align-items:center;gap:8px;padding:13px 24px;font-size:13px;color:var(--gl);border-right:1px solid #ffffff18}
+.ii:last-child{border:none}
+.dot{width:6px;height:6px;border-radius:50%;background:#8fcca0;flex-shrink:0}
+
+/* SECTION HEADER */
+.sh{text-align:center;padding:2.5rem 2rem 1rem}
+.stag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;color:var(--brown);line-height:1.1}
+.ssub{font-size:13px;color:var(--mid);margin-top:6px;font-weight:300}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 2rem 1.5rem}
+.tab{border:1px solid var(--light);background:transparent;color:var(--mid);padding:8px 18px;border-radius:20px;font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* MENU */
+.msec{display:none;padding:0 1.5rem 2rem}
+.msec.vis{display:block}
+.cat-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--brown);margin:1.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid var(--light)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-bottom:1rem}
+.mc{background:#fff;border:1px solid var(--light);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.mc:hover{transform:translateY(-2px);box-shadow:0 6px 20px #3b2a1a14}
+.ci{height:100px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:var(--warm);position:relative}
+.cbadge{position:absolute;top:7px;right:7px;background:var(--accent);color:#fff;font-size:9px;font-weight:500;padding:3px 9px;border-radius:10px}
+.cb{padding:12px}
+.cname{font-size:13px;font-weight:500;color:var(--brown);margin-bottom:3px}
+.cdesc{font-size:11px;color:var(--mid);line-height:1.5;margin-bottom:8px;font-weight:300}
+.cf{display:flex;align-items:center;justify-content:space-between}
+.cprice{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--accent)}
+.veg{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.veg.v{background:#2e7d32;border:1.5px solid #1b5e20}
+.veg.nv{background:var(--red);border:1.5px solid #922b21}
+
+/* ABOUT */
+.about{background:var(--warm);padding:2.5rem 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;border-top:1px solid var(--light);border-bottom:1px solid var(--light);text-align:center}
+.ai .icon{font-size:1.8rem;margin-bottom:.6rem;display:block}
+.ai .atitle{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--brown);margin-bottom:3px}
+.ai .atext{font-size:12px;color:var(--mid);font-weight:300;line-height:1.5}
+
+/* LOCATION */
+.loc{background:var(--green);padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:620px){.loc{grid-template-columns:1fr}}
+.ltitle{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--gl);margin-bottom:1.2rem}
+.lr{display:flex;gap:10px;margin-bottom:1rem;align-items:flex-start}
+.lic{font-size:16px;flex-shrink:0;margin-top:1px}
+.llabel{font-size:10px;color:#8fcca0;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.lval{font-size:13px;color:var(--gl);font-weight:300;line-height:1.5}
+.mapbox{background:#ffffff0f;border:1px solid #ffffff18;border-radius:12px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
+.soc{display:flex;align-items:center;gap:10px;color:var(--gl);font-size:13px;font-weight:300;padding:.75rem;background:#ffffff08;border-radius:8px;border:1px solid #ffffff12}
+.soc span{font-size:20px}
+.maplink{background:var(--accent);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;font-weight:500;text-align:center;display:block}
+
+footer{background:var(--brown);padding:1.5rem 2rem;text-align:center}
+footer p{font-size:11px;color:#7a6050;line-height:1.8}
+footer strong{color:#b8906a;font-weight:500}
+
+.wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 16px #25d36644;z-index:200}
+
+@media(max-width:640px){.nav-links{display:none}.ii{padding:10px 14px;font-size:11px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">The <span>Balance</span> Brew <span style="font-size:11px;color:var(--mid);font-family:'Outfit',sans-serif;font-weight:300">&amp; Coworks™</span></div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#find-us">Location</a></li>
+    <li><a href="https://www.instagram.com/balancebrewcafe" target="_blank">Instagram</a></li>
+  </ul>
+  <a href="https://wa.me/919999999999" class="nav-cta">Order Now</a>
+</nav>
+
+<div class="hero">
+  <div class="hi">
+    <div class="htag">Specialty Café &amp; Cowork Space · Balewadi, Pune</div>
+    <h1>Craft Coffee.<br><em>Real Food.</em> Good Vibes.</h1>
+    <p class="hdesc">Iced coffees, brewed teas, all-day breakfast, burgers, pasta &amp; more.<br>Dine in, work in, or order online — we've got you.</p>
+    <div class="hstats">
+      <div class="stat"><span class="n">4.9</span><span class="l">Rating</span></div>
+      <div class="stat"><span class="n">50+</span><span class="l">Reviews</span></div>
+      <div class="stat"><span class="n">₹600</span><span class="l">For Two</span></div>
+    </div>
+    <div class="hbtns">
+      <a href="#menu" class="bf">Explore Menu</a>
+      <a href="https://www.instagram.com/balancebrewcafe" target="_blank" class="bo">@balancebrewcafe</a>
+    </div>
+  </div>
+</div>
+
+<div class="ibar">
+  <div class="ii"><span class="dot"></span> Open Daily · 10:00 AM onwards</div>
+  <div class="ii"><span class="dot"></span> Balewadi High St, Baner, Pune</div>
+  <div class="ii"><span class="dot"></span> Dine-in · Delivery · Cowork</div>
+  <div class="ii"><span class="dot"></span> Veg &amp; Non-Veg</div>
+</div>
+
+<!-- MENU -->
+<div id="menu">
+  <div class="sh">
+    <div class="stag">Full Menu</div>
+    <div class="stitle">What We Serve</div>
+    <div class="ssub">Tap a category below</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('coffee',this)">☕ Coffee</button>
+    <button class="tab" onclick="show('teas',this)">🍵 Iced Teas</button>
+    <button class="tab" onclick="show('shakes',this)">🥤 Shakes</button>
+    <button class="tab" onclick="show('food',this)">🍔 Food</button>
+    <button class="tab" onclick="show('pasta',this)">🍝 Pasta</button>
+    <button class="tab" onclick="show('pizza',this)">🍕 Pizza</button>
+    <button class="tab" onclick="show('brekkie',this)">🍳 Breakfast</button>
+    <button class="tab" onclick="show('bowls',this)">🥗 Large Plates</button>
+  </div>
+
+  <!-- COFFEE -->
+  <div class="msec vis" id="tab-coffee">
+    <div class="cat-title">Classic Coffee Rituals</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Espresso</div><div class="cdesc">Pure, bold coffee shot with rich aroma and intense flavor.</div><div class="cf"><span class="cprice">₹120</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Americano</div><div class="cdesc">Bold espresso diluted with hot water for a smooth, strong coffee.</div><div class="cf"><span class="cprice">₹249</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Cappuccino</div><div class="cdesc">Rich espresso with steamed milk and a thick, creamy foam.</div><div class="cf"><span class="cprice">₹220</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Café Latte</div><div class="cdesc">Smooth espresso blended with steamed milk for a mild, creamy coffee.</div><div class="cf"><span class="cprice">₹289</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Flat White</div><div class="cdesc">Velvety espresso with finely steamed milk and a thin, smooth foam.</div><div class="cf"><span class="cprice">₹289</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Cortado</div><div class="cdesc">Equal parts espresso and warm milk — balanced and smooth.</div><div class="cf"><span class="cprice">₹269</span><span class="veg v"></span></div></div></div>
+    </div>
+    <div class="cat-title">Signature Sips</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍂<span class="cbadge">Signature</span></div><div class="cb"><div class="cname">Cinnamon Latte</div><div class="cdesc">Espresso infused with cinnamon.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌸<span class="cbadge">Bestseller</span></div><div class="cb"><div class="cname">Saigon Latte</div><div class="cdesc">Vietnamese-style blend of espresso, condensed milk and a hint of vanilla.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍦</div><div class="cb"><div class="cname">Affogato</div><div class="cdesc">Vanilla ice cream topped with hot espresso.</div><div class="cf"><span class="cprice">₹279</span><span class="veg v"></span></div></div></div>
+    </div>
+    <div class="cat-title">Iced Inspirations</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🧊</div><div class="cb"><div class="cname">Classic Iced Latte</div><div class="cdesc">Chilled espresso mixed with cold milk and ice for a smooth, refreshing coffee.</div><div class="cf"><span class="cprice">₹289</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍮<span class="cbadge">Fan Fav</span></div><div class="cb"><div class="cname">Ice Caramel Macchiato</div><div class="cdesc">Cold milk layered with espresso, ice, and finished with a rich caramel drizzle.</div><div class="cf"><span class="cprice">₹320</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🖤</div><div class="cb"><div class="cname">Iced Americano</div><div class="cdesc">Chilled espresso diluted with cold water and ice for a bold, refreshing coffee.</div><div class="cf"><span class="cprice">₹279</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍫</div><div class="cb"><div class="cname">Iced Mocha</div><div class="cdesc">Chilled espresso blended with chocolate, cold milk, and ice.</div><div class="cf"><span class="cprice">₹250</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌺</div><div class="cb"><div class="cname">Iced Saigon</div><div class="cdesc">Vietnamese-style iced coffee — espresso, condensed milk and a hint of vanilla over ice.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+    </div>
+    <div class="cat-title">Blended Indulgence</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍬</div><div class="cb"><div class="cname">Caramel Frappe</div><div class="cdesc">Blended coffee with caramel syrup, milk, and ice cream.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Classic Frappe</div><div class="cdesc">Blended coffee with milk and ice cream for a rich, creamy treat.</div><div class="cf"><span class="cprice">₹279</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌰</div><div class="cb"><div class="cname">Hazelnut Frappe</div><div class="cdesc">Blended coffee with hazelnut flavor, milk, and ice cream.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍪<span class="cbadge">Must Try</span></div><div class="cb"><div class="cname">Java Chip Frappe</div><div class="cdesc">Blended coffee with chocolate chips, milk, and ice cream for a rich, crunchy treat.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍫</div><div class="cb"><div class="cname">Mocha Frappe</div><div class="cdesc">Blended coffee with chocolate, milk, and ice cream.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍨<span class="cbadge">Must Try</span></div><div class="cb"><div class="cname">Tiramisu Frappe</div><div class="cdesc">Blended coffee with creamy tiramisu flavor, milk, and ice cream.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+    </div>
+    <div class="cat-title">Hot Chocolate</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍫</div><div class="cb"><div class="cname">Classic Hot Chocolate</div><div class="cdesc">Rich, creamy chocolate blended with hot milk for a warm, comforting drink.</div><div class="cf"><span class="cprice">₹299</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧁<span class="cbadge">Indulgent</span></div><div class="cb"><div class="cname">Brownie Hot Chocolate</div><div class="cdesc">Decadent hot chocolate blended with chocolate brownie pieces.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">☕</div><div class="cb"><div class="cname">Espresso Hot Chocolate</div><div class="cdesc">Rich hot chocolate combined with bold espresso for a smooth, energizing treat.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- TEAS -->
+  <div class="msec" id="tab-teas">
+    <div class="cat-title">Refreshing Iced Teas</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🌿</div><div class="cb"><div class="cname">Basil &amp; Mint Ice Tea</div><div class="cdesc">Refreshing brewed tea infused with basil and mint, served chilled.</div><div class="cf"><span class="cprice">₹250</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌺<span class="cbadge">Popular</span></div><div class="cb"><div class="cname">Hibiscus Ice Tea</div><div class="cdesc">Floral hibiscus tea brewed and chilled for a refreshing, tangy drink.</div><div class="cf"><span class="cprice">₹250</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍋</div><div class="cb"><div class="cname">Lemon &amp; Mint Iced Tea</div><div class="cdesc">Refreshing brewed tea with lemon flavor and ice for a cool, zesty drink.</div><div class="cf"><span class="cprice">₹220</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍹</div><div class="cb"><div class="cname">Passion Fruit Ice Tea</div><div class="cdesc">Brewed tea infused with passion fruit for a tangy, tropical drink.</div><div class="cf"><span class="cprice">₹230</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍑</div><div class="cb"><div class="cname">Peach Iced Tea</div><div class="cdesc">Brewed tea infused with peach for a smooth, fruity drink.</div><div class="cf"><span class="cprice">₹220</span><span class="veg v"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- SHAKES -->
+  <div class="msec" id="tab-shakes">
+    <div class="cat-title">Cloud 9 Shakes</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍪<span class="cbadge">Must Try</span></div><div class="cb"><div class="cname">Biscoff Nutella Shake</div><div class="cdesc">Creamy shake blended with Biscoff spread and Nutella for a rich, indulgent treat.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🫐</div><div class="cb"><div class="cname">Blue Berry Shake</div><div class="cdesc">Creamy milkshake blended with blueberry for a smooth, fruity treat.</div><div class="cf"><span class="cprice">₹369</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍫</div><div class="cb"><div class="cname">Choco Waf-Fantasy</div><div class="cdesc">Crispy chocolate wafers blended with rich chocolate and milk for a crunchy, indulgent treat.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧁<span class="cbadge">Rich</span></div><div class="cb"><div class="cname">Chocolate Brownie Shake</div><div class="cdesc">Rich chocolate brownie blended with milk and ice cream for a thick, indulgent shake.</div><div class="cf"><span class="cprice">₹399</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍓</div><div class="cb"><div class="cname">Strawberry Shake</div><div class="cdesc">Creamy milkshake blended with rich strawberry flavor for a sweet, refreshing treat.</div><div class="cf"><span class="cprice">₹369</span><span class="veg v"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- FOOD -->
+  <div class="msec" id="tab-food">
+    <div class="cat-title">Small Plates &amp; Appetizers</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🌽</div><div class="cb"><div class="cname">Balance Brew Corn Ribs</div><div class="cdesc">Juicy corn ribs with signature spice mix, grilled to perfection with hot sauce.</div><div class="cf"><span class="cprice">₹290</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧀</div><div class="cb"><div class="cname">Corn Cheese Balls</div><div class="cdesc">Creamy corn and cheese in a crisp breadcrumb shell, served with in-house Aioli.</div><div class="cf"><span class="cprice">₹349</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍟</div><div class="cb"><div class="cname">Parmesan Potato Wedges</div><div class="cdesc">Crispy golden wedges tossed in butter and sprinkled with grated Parmesan.</div><div class="cf"><span class="cprice">₹309</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍟</div><div class="cb"><div class="cname">Peri-Peri Fries</div><div class="cdesc">Classic french fries dusted with the peri peri sprinkler.</div><div class="cf"><span class="cprice">₹289</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍟</div><div class="cb"><div class="cname">Salted Fries</div><div class="cdesc">Classic french fries — simple, crispy, perfect.</div><div class="cf"><span class="cprice">₹220</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌮</div><div class="cb"><div class="cname">Tex-Mex Nachos (Veg)</div><div class="cdesc">Crunchy nachos served with Pico de Gallo and Cheese Sauce.</div><div class="cf"><span class="cprice">₹349</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌮</div><div class="cb"><div class="cname">Chicken Tex-Mex Nachos</div><div class="cdesc">Crunchy nachos loaded with spicy chicken, Pico de Gallo and Cheese Sauce.</div><div class="cf"><span class="cprice">₹389</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍗</div><div class="cb"><div class="cname">Crunchy Tenders</div><div class="cdesc">Hand-breaded chicken tenders fried to golden perfection, served with garlic Aioli.</div><div class="cf"><span class="cprice">₹439</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🌯</div><div class="cb"><div class="cname">Veg Stuffed Tortilla</div><div class="cdesc">Tortilla stuffed with exotic veggies, served with Pico de Gallo.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌯</div><div class="cb"><div class="cname">Non-Veg Stuffed Tortilla</div><div class="cdesc">Tortilla stuffed with spicy minced chicken, served with Pico de Gallo.</div><div class="cf"><span class="cprice">₹399</span><span class="veg nv"></span></div></div></div>
+    </div>
+    <div class="cat-title">Stuffed Breads &amp; Sandwiches</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🥪</div><div class="cb"><div class="cname">Bombay Creation</div><div class="cdesc">Crispy, cheesy, and minty — the ultimate Bombay bite.</div><div class="cf"><span class="cprice">₹279</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥖</div><div class="cb"><div class="cname">Veg Caesar Crunch</div><div class="cdesc">Crispy fried paneer with creamy Caesar and fresh lettuce on toasted ciabatta.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥖</div><div class="cb"><div class="cname">Non-Veg Caesar Crunch</div><div class="cdesc">Crispy fried chicken with creamy Caesar and fresh lettuce on toasted ciabatta.</div><div class="cf"><span class="cprice">₹459</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🥪</div><div class="cb"><div class="cname">Veg Classic Triple Decker</div><div class="cdesc">Spicy seasoned veggies with melted cheese and crisp lettuce, stacked and grilled.</div><div class="cf"><span class="cprice">₹369</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥪</div><div class="cb"><div class="cname">Non-Veg Classic Triple Decker</div><div class="cdesc">Spicy chicken with melted cheese and crisp lettuce — stacked, grilled, irresistible.</div><div class="cf"><span class="cprice">₹409</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🌶️</div><div class="cb"><div class="cname">Veg Spiced Tandoori</div><div class="cdesc">Spicy tandoori paneer with melted cheese — a bold, smoky delight.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌶️</div><div class="cb"><div class="cname">Non-Veg Spiced Tandoori</div><div class="cdesc">Spicy tandoori chicken with melted cheese — a bold, smoky delight.</div><div class="cf"><span class="cprice">₹369</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🥑</div><div class="cb"><div class="cname">Veg Mexican Torta</div><div class="cdesc">Crispy paneer, cheese, avocado and jalapeños on toasted ciabatta.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥑</div><div class="cb"><div class="cname">Non-Veg Mexican Torta</div><div class="cdesc">Crispy chicken, cheese, avocado and jalapeños on toasted ciabatta.</div><div class="cf"><span class="cprice">₹459</span><span class="veg nv"></span></div></div></div>
+    </div>
+    <div class="cat-title">Burgers</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Handcrafted Veggie</div><div class="cdesc">Fresh, flavorful, and handcrafted — a veggie delight in every bite.</div><div class="cf"><span class="cprice">₹299</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Veg The Classic Clucker</div><div class="cdesc">Golden, crunchy cottage cheese and gourmet with a refreshing mint twist.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Non-Veg The Classic Clucker</div><div class="cdesc">Golden, crunchy chicken with a refreshing mint twist.</div><div class="cf"><span class="cprice">₹369</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🌶️</div><div class="cb"><div class="cname">Veg Glazed Gochujang</div><div class="cdesc">Korean-style crispy cottage cheese patty glazed with Gochujang — sweet, spicy, bold.</div><div class="cf"><span class="cprice">₹369</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌶️</div><div class="cb"><div class="cname">Non-Veg Glazed Gochujang</div><div class="cdesc">Korean-style crispy chicken patty glazed with Gochujang — sweet, spicy, bold.</div><div class="cf"><span class="cprice">₹409</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Veg Zesty Cajun</div><div class="cdesc">Crispy cottage cheese, spicy, and packed with Cajun flavor.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Non-Veg Zesty Cajun</div><div class="cdesc">Crispy chicken, spicy, and packed with Cajun flavor.</div><div class="cf"><span class="cprice">₹379</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Veg Southern Soul</div><div class="cdesc">Southern-spiced crispy cottage cheese topped with creamy slaw and tangy sauce.</div><div class="cf"><span class="cprice">₹369</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍔</div><div class="cb"><div class="cname">Non-Veg Southern Soul</div><div class="cdesc">Southern-spiced crispy chicken topped with creamy slaw and tangy sauce.</div><div class="cf"><span class="cprice">₹409</span><span class="veg nv"></span></div></div></div>
+    </div>
+    <div class="cat-title">Salads</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🥗</div><div class="cb"><div class="cname">Classic Caesar</div><div class="cdesc">Crisp lettuce in creamy Caesar dressing, topped with Parmesan and crunchy croutons.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥜</div><div class="cb"><div class="cname">Vietnamese Peanut Salad</div><div class="cdesc">Crisp vegetables and lettuce tossed in a savory peanut dressing with roasted peanuts.</div><div class="cf"><span class="cprice">₹379</span><span class="veg v"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- PASTA -->
+  <div class="msec" id="tab-pasta">
+    <div class="cat-title">Pasta</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍝</div><div class="cb"><div class="cname">Aglio E Olio</div><div class="cdesc">Timeless Italian pasta with extra virgin olive oil, garlic, chilli flakes, parsley and Parmesan.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌿<span class="cbadge">Chef's Pick</span></div><div class="cb"><div class="cname">Basil Pesto</div><div class="cdesc">Al dente pasta tossed in house-made basil pesto — rich and irresistible.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥬</div><div class="cb"><div class="cname">Creamy Spinach</div><div class="cdesc">Smooth, creamy, and packed with garden-fresh spinach flavor.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧀<span class="cbadge">Indulgent</span></div><div class="cb"><div class="cname">Mac 'N' Cheese</div><div class="cdesc">Macaroni in chef's special cheese sauce — gooey, creamy, and indulgent.</div><div class="cf"><span class="cprice">₹509</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍅</div><div class="cb"><div class="cname">Tomato &amp; Basil</div><div class="cdesc">Tender pasta in a rich tomato-basil sauce, finished with garlic, olive oil, and Parmesan.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍝</div><div class="cb"><div class="cname">Spaghetti Veggie Bolo</div><div class="cdesc">Farm fresh vegetables simmered in rich Italian tomato sauce with al dente spaghetti.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍝</div><div class="cb"><div class="cname">Spaghetti Bolognese</div><div class="cdesc">Classic spaghetti in rich Italian tomato sauce with minced chicken, Parmesan and parsley.</div><div class="cf"><span class="cprice">₹489</span><span class="veg nv"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- PIZZA -->
+  <div class="msec" id="tab-pizza">
+    <div class="cat-title">Pizza</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍕</div><div class="cb"><div class="cname">Classic Margherita</div><div class="cdesc">Thin crispy crust with sliced tomato, mozzarella, basil and olive oil.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌶️</div><div class="cb"><div class="cname">El Mexicano</div><div class="cdesc">Spicy corns, colorful bell peppers, onion, jalapeño, mozzarella.</div><div class="cf"><span class="cprice">₹499</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧀<span class="cbadge">Indulgent</span></div><div class="cb"><div class="cname">Four Cheese Pizza</div><div class="cdesc">In-house four cheese melted to perfection.</div><div class="cf"><span class="cprice">₹539</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥦</div><div class="cb"><div class="cname">Fresh Garden</div><div class="cdesc">Mushroom, bell peppers, zucchini, baby corn, olives, jalapeños, mozzarella.</div><div class="cf"><span class="cprice">₹459</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌿</div><div class="cb"><div class="cname">Green Goodness (Veg)</div><div class="cdesc">Pesto marinated paneer, broccoli, olive, cherry tomatoes, mozzarella.</div><div class="cf"><span class="cprice">₹459</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌿</div><div class="cb"><div class="cname">Green Goodness (Non-Veg)</div><div class="cdesc">Pesto marinated chicken, broccoli, olive, cherry tomatoes, mozzarella.</div><div class="cf"><span class="cprice">₹459</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍕</div><div class="cb"><div class="cname">Tikka Twist (Veg)</div><div class="cdesc">Tandoori paneer, colorful bell peppers, onion, mozzarella.</div><div class="cf"><span class="cprice">₹459</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍕</div><div class="cb"><div class="cname">Tikka Twist (Non-Veg)</div><div class="cdesc">Tandoori chicken, colorful bell peppers, onion, mozzarella.</div><div class="cf"><span class="cprice">₹499</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🥬</div><div class="cb"><div class="cname">Viva Verde</div><div class="cdesc">Vibrant pesto sauce, capsicum, broccoli, zucchini, mozzarella.</div><div class="cf"><span class="cprice">₹529</span><span class="veg v"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- BREAKFAST -->
+  <div class="msec" id="tab-brekkie">
+    <div class="cat-title">All Day Breakfast</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🍳</div><div class="cb"><div class="cname">Eggs Your Way</div><div class="cdesc">Scrambled, sunny side up, basic or masala omelette — with potato wedges and garlic bread.</div><div class="cf"><span class="cprice">₹279</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍳<span class="cbadge">Hearty</span></div><div class="cb"><div class="cname">English Brekkie Platter</div><div class="cdesc">Garlic toast, baked beans, grilled veggies, hashbrowns, eggs, and chicken sausage.</div><div class="cf"><span class="cprice">₹409</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🌈</div><div class="cb"><div class="cname">Exotic Veggie Omelette</div><div class="cdesc">Fluffy, colorful, packed with exotic veggies, served with garlic bread and hashbrown.</div><div class="cf"><span class="cprice">₹359</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍳</div><div class="cb"><div class="cname">Loaded Chicken Omelette</div><div class="cdesc">Spicy chicken, melted cheddar, served with hashbrowns and garlic bread.</div><div class="cf"><span class="cprice">₹299</span><span class="veg nv"></span></div></div></div>
+    </div>
+    <div class="cat-title">On Toast / Croissant</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🥑<span class="cbadge">Trending</span></div><div class="cb"><div class="cname">Avocado Toast</div><div class="cdesc">Creamy smashed avocado on sourdough or a buttery croissant, with seasoning.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥬</div><div class="cb"><div class="cname">Eggs Over Spinach</div><div class="cdesc">Sautéed spinach topped with perfectly cooked eggs, served on toast or croissant.</div><div class="cf"><span class="cprice">₹329</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍄</div><div class="cb"><div class="cname">Garlic Mushroom Toast</div><div class="cdesc">Sautéed garlic mushrooms with melted cheese on sourdough or croissant.</div><div class="cf"><span class="cprice">₹370</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌽</div><div class="cb"><div class="cname">Mexican Street Corn</div><div class="cdesc">Grilled corn with spicy Mexican seasoning and creamy sauce on toast or croissant.</div><div class="cf"><span class="cprice">₹329</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥚</div><div class="cb"><div class="cname">Scrambled Egg Toast</div><div class="cdesc">Fluffy eggs on sourdough or croissant — simple, creamy, and delicious.</div><div class="cf"><span class="cprice">₹330</span><span class="veg nv"></span></div></div></div>
+    </div>
+  </div>
+
+  <!-- LARGE PLATES / BOWLS -->
+  <div class="msec" id="tab-bowls">
+    <div class="cat-title">Large Plates</div>
+    <div class="mgrid">
+      <div class="mc"><div class="ci">🥗</div><div class="cb"><div class="cname">Veg Green Bowl</div><div class="cdesc">Brown rice with grilled paneer, green beans, broccoli, and crisp lettuce.</div><div class="cf"><span class="cprice">₹409</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🌮</div><div class="cb"><div class="cname">Veg Mexican Bowl</div><div class="cdesc">Grilled paneer with cilantro-lime rice, lettuce, avocado, beans, corn and peri peri sauce.</div><div class="cf"><span class="cprice">₹459</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍜</div><div class="cb"><div class="cname">Veg Teriyaki Bowl</div><div class="cdesc">Teriyaki-glazed paneer on brown rice with sautéed veggies.</div><div class="cf"><span class="cprice">₹429</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🍱</div><div class="cb"><div class="cname">Veg Crispy Bowl</div><div class="cdesc">Golden crispy paneer with brown rice, red cabbage, carrots, cherry tomatoes, zucchini.</div><div class="cf"><span class="cprice">₹489</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🧆</div><div class="cb"><div class="cname">Cottage Cheese Paprika</div><div class="cdesc">Grilled cottage cheese with brown rice, sautéed veg, hashbrowns, and paprika sauce.</div><div class="cf"><span class="cprice">₹499</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥬</div><div class="cb"><div class="cname">Cottage Cheese Spinach</div><div class="cdesc">Grilled cottage cheese with brown rice, sautéed veg, hashbrowns, and creamy spinach sauce.</div><div class="cf"><span class="cprice">₹499</span><span class="veg v"></span></div></div></div>
+      <div class="mc"><div class="ci">🥗</div><div class="cb"><div class="cname">Non-Veg Green Bowl</div><div class="cdesc">Brown rice with grilled chicken, green beans, broccoli, and crisp lettuce.</div><div class="cf"><span class="cprice">₹429</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🌮</div><div class="cb"><div class="cname">Non-Veg Mexican Bowl</div><div class="cdesc">Grilled chicken with cilantro-lime rice, avocado, beans, corn and peri peri sauce.</div><div class="cf"><span class="cprice">₹499</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍜</div><div class="cb"><div class="cname">Non-Veg Teriyaki Bowl</div><div class="cdesc">Teriyaki-glazed chicken on brown rice with sautéed veggies.</div><div class="cf"><span class="cprice">₹459</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍱</div><div class="cb"><div class="cname">Non-Veg Crispy Bowl</div><div class="cdesc">Golden crispy chicken with brown rice, red cabbage, carrots, cherry tomatoes, zucchini.</div><div class="cf"><span class="cprice">₹529</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🍗</div><div class="cb"><div class="cname">Grilled Paprika Chicken</div><div class="cdesc">Smoky grilled chicken with creamy mashed potatoes and sautéed vegetables.</div><div class="cf"><span class="cprice">₹539</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🥩<span class="cbadge">Premium</span></div><div class="cb"><div class="cname">Pesto Chicken Steak</div><div class="cdesc">Grilled chicken with creamy pesto sauce, brown rice, veggies and hashbrowns.</div><div class="cf"><span class="cprice">₹559</span><span class="veg nv"></span></div></div></div>
+      <div class="mc"><div class="ci">🥩<span class="cbadge">Premium</span></div><div class="cb"><div class="cname">Stuffed Chicken Steak</div><div class="cdesc">Spinach and cheese stuffed chicken with smoky paprika sauce, brown rice, veggies, hashbrowns.</div><div class="cf"><span class="cprice">₹589</span><span class="veg nv"></span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="ai"><span class="icon">☕</span><div class="atitle">Specialty Coffee</div><div class="atext">Every cup crafted with freshly pulled espresso and quality beans.</div></div>
+  <div class="ai"><span class="icon">💻</span><div class="atitle">Café &amp; Cowork</div><div class="atext">A space to eat, meet, and get things done — all in one spot.</div></div>
+  <div class="ai"><span class="icon">⭐</span><div class="atitle">Rated 4.9</div><div class="atext">One of the highest-rated cafés in Balewadi with 50+ glowing reviews.</div></div>
+  <div class="ai"><span class="icon">🚴</span><div class="atitle">Home Delivery</div><div class="atext">Order via Zomato, Swiggy, or WhatsApp — delivered fresh to your door.</div></div>
+</div>
+
+<!-- LOCATION -->
+<div class="loc" id="find-us">
+  <div>
+    <div class="ltitle">Find Us</div>
+    <div class="lr"><span class="lic">📍</span><div><div class="llabel">Address</div><div class="lval">R2, Daisy Society, Lalit Estate,<br>Balewadi High Street, Baner,<br>Pune – 411069, Maharashtra</div></div></div>
+    <div class="lr"><span class="lic">🕙</span><div><div class="llabel">Hours</div><div class="lval">10:00 AM onwards · All Days</div></div></div>
+    <div class="lr"><span class="lic">📦</span><div><div class="llabel">Order Online</div><div class="lval">Zomato · Swiggy · WhatsApp</div></div></div>
+  </div>
+  <div class="mapbox">
+    <div class="soc"><span>📸</span> Follow us on Instagram</div>
+    <a href="https://www.instagram.com/balancebrewcafe" target="_blank" class="soc" style="color:var(--gl)"><span>📱</span> @balancebrewcafe</a>
+    <a href="https://maps.google.com/?q=Balance+Brew+Cafe+Balewadi+Pune" target="_blank" class="maplink">📍 Open in Google Maps</a>
+    <a href="https://wa.me/919999999999" class="maplink" style="background:var(--green)">💬 Order on WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <p><strong>The Balance Brew Café &amp; Coworks™</strong> · R2, Daisy Society, Balewadi High St, Baner, Pune – 411069<br>
+  Follow us · <strong>@balancebrewcafe</strong> · © 2026 The Balance Brew · All rights reserved</p>
+</footer>
+
+<a href="https://wa.me/919999999999" class="wa" title="Order on WhatsApp">💬</a>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.msec').forEach(s=>s.classList.remove('vis'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('vis');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
